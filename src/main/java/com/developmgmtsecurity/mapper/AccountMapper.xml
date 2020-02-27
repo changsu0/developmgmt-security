@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.developmgmtsecurity.mapper.AccountMapper">
+
+    <insert id="createAccount" parameterType="accountVO">
+      INSERT INTO tb_devmgmt_user (user_id, user_nm, user_pw)
+      VALUES (#{userId}, #{userNm}, #{userPw})
+    </insert>
+
+    <select id="selectByUserId" parameterType="String" resultType="accountVO">
+        SELECT
+               A.user_id
+             , A.user_nm
+             , A.user_pw
+             , A.enabled
+             , A.account_non_expired
+             , A.credentials_non_expired
+             , A.account_non_locked
+             , A.create_dt
+             , B.auth_grp_id
+        FROM tb_devmgmt_user A, tb_devmgmt_user_auth B
+        WHERE 1=1
+          AND A.user_id = B.user_id
+          AND A.user_id = #{value}
+    </select>
+</mapper>

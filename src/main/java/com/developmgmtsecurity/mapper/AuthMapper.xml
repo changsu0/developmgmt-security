@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.developmgmtsecurity.mapper.AuthMapper">
+
+    <insert id="insertAuthGrp" parameterType="authVO">
+        INSERT INTO tb_devmgmt_auth (auth_grp_id, auth_grp_nm, sort_order)
+        VALUES (#{authGrpId}, #{authGrpNm}, #{sortOrder})
+    </insert>
+
+    <insert id="insertAuthMenu" parameterType="authVO">
+        INSERT INTO tb_devmgmt_auth_menu (auth_grp_id, menu_id)
+        VALUES (#{authGrpId}, #{menuId})
+    </insert>
+
+    <insert id="insertUserAuth" parameterType="accountVO">
+        INSERT INTO tb_devmgmt_user_auth (user_id, auth_grp_id)
+        VALUES (#{userId}, #{authGrpId})
+    </insert>
+</mapper>

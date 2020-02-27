@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.developmgmtsecurity.mapper.MenuMapper">
+
+    <insert id="insertMenu" parameterType="menuVO">
+      INSERT INTO tb_devmgmt_menu (menu_id, menu_nm, upper_menu_id, menu_lvl, sort_order, menu_url)
+      VALUES (#{menuId}, #{menuNm}, #{upperMenuId}, #{menuLvl}, #{sortOrder}, #{menuUrl})
+    </insert>
+</mapper>
